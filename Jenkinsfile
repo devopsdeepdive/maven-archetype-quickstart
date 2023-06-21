@@ -1,7 +1,5 @@
 pipeline {
-agent {
-  label 'jenkins_agent'
-}
+agent any
 
     stages{
         stage("Checkout") {
@@ -19,6 +17,11 @@ agent {
         stage("Test"){
             steps {
                 sh 'mvn test'
+            }
+        }
+	stage("Package"){
+            steps {
+                sh 'mvn package'
             }
         }
         stage("Deploy") {
